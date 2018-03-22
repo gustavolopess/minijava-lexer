@@ -5,9 +5,8 @@ import java_cup.runtime.*;
 
 %{
 
-private int printToken(String name, String value) {
+private void printToken(String name, String value) {
 	System.out.printf("<%s, %s> (%d - %d)\n", name, value, yyline, yycolumn);
-	return 0;
 }
 
 %}
@@ -21,7 +20,7 @@ private int printToken(String name, String value) {
 %class Minijava
 %eofclose
 
-/* Insira as regras l�xicas abaixo */
+/* Insira as regras lexicas abaixo */
 
 newline = (\n|\r\n)
 whitespace = ([\s|\t|\r|\f]|{newline})
@@ -37,14 +36,14 @@ intLiterals = [1-9][0-9]*
 
 %%
 
-{whitespace} { return printToken("whitespace", ""); }
-{lineComment} { return printToken("line comment", yytext()); }
-{blockComment} { return printToken("block comment", ""); }
-{resWord} { return printToken("reserved word", yytext()); }
-{operators} { return printToken("operator", yytext()); }
-{delimiters} { return printToken("delimiter", yytext()); }
-{identifier} { return printToken("identifier", yytext()); }
-{intLiterals} { return printToken("integer literal", yytext()); }
+{whitespace} { printToken("whitespace", ""); }
+{lineComment} { printToken("line comment", yytext()); }
+{blockComment} { printToken("block comment", ""); }
+{resWord} { printToken("reserved word", yytext()); }
+{operators} { printToken("operator", yytext()); }
+{delimiters} { printToken("delimiter", yytext()); }
+{identifier} { printToken("identifier", yytext()); }
+{intLiterals} { printToken("integer literal", yytext()); }
 
 
     

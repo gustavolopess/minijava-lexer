@@ -427,9 +427,8 @@ public class Minijava {
 
   /* user code: */
 
-private int printToken(String name, String value) {
+private void printToken(String name, String value) {
 	System.out.printf("<%s, %s> (%d - %d)\n", name, value, yyline, yycolumn);
-	return 0;
 }
 
 
@@ -822,31 +821,31 @@ private int printToken(String name, String value) {
             }
           case 9: break;
           case 2: 
-            { return printToken("whitespace", "");
+            { printToken("whitespace", "");
             }
           case 10: break;
           case 3: 
-            { return printToken("operator", yytext());
+            { printToken("operator", yytext());
             }
           case 11: break;
           case 4: 
-            { return printToken("identifier", yytext());
+            { printToken("identifier", yytext());
             }
           case 12: break;
           case 5: 
-            { return printToken("delimiter", yytext());
+            { printToken("delimiter", yytext());
             }
           case 13: break;
           case 6: 
-            { return printToken("reserved word", yytext());
+            { printToken("reserved word", yytext());
             }
           case 14: break;
           case 7: 
-            { return printToken("line comment", yytext());
+            { printToken("line comment", yytext());
             }
           case 15: break;
           case 8: 
-            { return printToken("block comment", "");
+            { printToken("block comment", "");
             }
           case 16: break;
           default:
